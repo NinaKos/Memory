@@ -7,3 +7,14 @@
 
 .memory-element img {width:150px;height:150px;backface-visibility:hidden;transform:rotateY(180deg);transform-style:preserve-3d;transition:0.5s;}
 .memory-element.activated img, .memory-element.solved img {transform:rotateY(0deg);transition:.5s;}
+
+body {
+	background-color: #CC99CC
+}
+
+header {
+	text-align: center;
+	font-size: 50px;
+	font-family: courier;
+	color: #9900FF
+}
