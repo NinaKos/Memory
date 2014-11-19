@@ -1,0 +1,9 @@
+#game {-moz-column-count:4;-moz-column-gap:20px;-webkit-column-count:4;-webkit-column-gap:20px;}
+
+.memory-element {width:150px;height:150px;display:inline-block;margin:30px;}
+.memory-element:hover {margin:20px;border:10px solid rgba(0,0,0,.1);}
+.memory-element.failed {margin:20px;border:10px solid rgba(255,0,0,1);}
+.memory-element.solved {margin:20px;border:10px solid rgba(0,255,0,1);}
+
+.memory-element img {width:150px;height:150px;backface-visibility:hidden;transform:rotateY(180deg);transform-style:preserve-3d;transition:0.5s;}
+.memory-element.activated img, .memory-element.solved img {transform:rotateY(0deg);transition:.5s;}
