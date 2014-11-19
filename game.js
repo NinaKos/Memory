@@ -1,9 +1,5 @@
 /*
 http://www.panco.si/memory/tutorial/
-
-Pred vsako spremenljivko daš var v JavaScript
-V nasem primeru imamo kompleksen tip variable, vse skupaj zapakiramo v eno funkcijo
-Spodnji del kode je prilozen z namenom, da se koda res izvede (vidimo index.html na browserju), ko jo pozenemo
 */
 
 var Memory = (function () {
@@ -17,7 +13,6 @@ var Memory = (function () {
 
 		colors: ['#99b433', '#1e7145', '#ff0097', '#9f00a7', '#7e3878', '#603cba', '#1d1d1d', '#00aba9', '#eff4ff', '#2d89ef', '#2b5797', '#ffc40d', '#e3a21a', '#da532c', '#ee1111', '#b91d47'],
 
-		/* Premesamo karte, spodnja koda je z stackoverflowa */
 		shuffle: function (array) { // http://stackoverflow.com/a/6274398
 			var counter = array.length,
 				temp = null,
@@ -39,22 +34,6 @@ var Memory = (function () {
 			return array;
 		},
 
-		/* 
-		Nujno vejica pred funkcijo draw!! 
-
-		Spodnji game imamo v id v index.html
-		V JavaScript je bolje uporabljati $.each namesto for zanke
-
-		css selektorji - oznake s katerimi izberemo del html-ja in mu povemo kaksne lastnosti naj ima
-		Pri jQueryju isto uporabljamo . za class in # za id 
-
-		V div moremo dati img element
-		append vzame iz div game in mu doda slikice, ki jih potem vidimo na browserju
-
-		$ je za framework jquery od JavaScript, dodamo $ pred objekt za katerega hocemo da se na njem uporabi jquery
-		ukaz html jquery objekt prevede v html, ki ga potem vidimo na browserju
-		*/
-
 		draw: function () {
 			var game = $('#game'),
 			shuffledPairs = [],
@@ -72,20 +51,8 @@ var Memory = (function () {
 				imageElm.css('background-color', shuffledColors[i]);
 				game.append(imageElm);
 			});
-
-			/*
-			game.append(elm);
-			game.append($(elm).html()); Slikice so blizje druga drugi, vse da v en div 
-			*/
-
 		},
 
-		/* 
-		Klikanje slikic
-		Vsakic, ko kliknes na neko slikico, si bo on zapomnil na katero smo ze kliknili
-		Obarva zeleno, ce sta url-ja od slikic enaka, ce nista enaka obarvaj rdece
-		Ce se obarva rdece, pocaka 500 mili sekund in potem zbrise rdec okvir
-		*/
 		handleResolving: function () {
 			$('#game').on('click', '.memory-element:not(.solved)', function () {
 				var elm = $(this),
@@ -102,7 +69,6 @@ var Memory = (function () {
 					r.resolvePair(activatedElms);
 				}
 
-				/* Pojavi se okence s spodnjim besedilom in lahko kliknes OK za novo igro */
 				if ($('.solved').length === $('.memory-element').length) {
 					if (confirm('You win! Click OK to play another game.')) {
 						$('.memory-element').remove();
@@ -112,7 +78,6 @@ var Memory = (function () {
 			});		
 		},
 
-		/* Kliknes na dve enaki in dobis zelen okvir okrog slicic (prej je siv okvir), rdec okvir dobis, ce se zmotis */
 		resolvePair: function (activatedElms) {
 			var pair = [];
 
@@ -138,7 +103,7 @@ var Memory = (function () {
 
 	u = {
 		initialize: function () {
-			r.draw(); /* Poklicemo naso funkcijo, pokazejo se slikice v browserju */
+			r.draw(); 
 			r.handleResolving();
 		}
 	};
